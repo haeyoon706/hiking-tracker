@@ -1,25 +1,19 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
+import Hiking from './screens/Hiking';
 
 function App(): React.JSX.Element {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.app}>
       <StatusBar />
-      <View style={styles.main}>
-        <Text>test</Text>
-      </View>
+      <Hiking />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  app: {
     flex: 1,
-  },
-  main: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
 
