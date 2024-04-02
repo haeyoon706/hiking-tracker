@@ -1,6 +1,7 @@
 import React from 'react';
-import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {Pressable, StyleSheet, View} from 'react-native';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 function Main(props: MainProps) {
   const {navigation} = props;
@@ -12,7 +13,7 @@ function Main(props: MainProps) {
   return (
     <View style={styles.container}>
       <Pressable onPress={startHikingHandler}>
-        <Text>시작 !</Text>
+        <Icon name="play" size={32} />
       </Pressable>
     </View>
   );
