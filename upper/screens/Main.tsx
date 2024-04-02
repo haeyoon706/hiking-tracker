@@ -1,10 +1,18 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
 
-function Main() {
+function Main(props: MainProps) {
+  const {navigation} = props;
+
+  const startHikingHandler = () => {
+    navigation.navigate('Hiking');
+  };
+
   return (
     <View style={styles.container}>
-      <Text>Main</Text>
+      <Pressable onPress={startHikingHandler}>
+        <Text>시작 !</Text>
+      </Pressable>
     </View>
   );
 }
@@ -18,3 +26,7 @@ const styles = StyleSheet.create({
 });
 
 export default Main;
+
+interface MainProps {
+  navigation: any;
+}
