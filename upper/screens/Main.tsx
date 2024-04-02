@@ -1,5 +1,6 @@
 import React from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {NavigationProp, ParamListBase} from '@react-navigation/native';
 
 function Main(props: MainProps) {
   const {navigation} = props;
@@ -28,5 +29,5 @@ const styles = StyleSheet.create({
 export default Main;
 
 interface MainProps {
-  navigation: any;
+  navigation: NavigationProp<ParamListBase>;
 }
