@@ -37,6 +37,7 @@ const Tabs = () => {
       return (
         <Tab.Screen
           name={tab.name}
+          key={tab.name}
           component={tab.comppnent}
           options={{
             tabBarIcon: ({color, size}) => getTabIcon(tab.icon, color, size),
