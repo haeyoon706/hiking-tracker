@@ -3,9 +3,14 @@ import {Pressable, StyleSheet, View} from 'react-native';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Map from '@components/common/Map';
+import {useMountEffect} from '@hooks/lifecycle';
 
 function Main(props: MainProps) {
   const {navigation} = props;
+
+  useMountEffect(() => {
+    console.log('mount');
+  });
 
   const startHikingHandler = () => {
     navigation.navigate('Hiking');

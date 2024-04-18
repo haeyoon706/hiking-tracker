@@ -4,7 +4,9 @@
     "paths": {
       "@components/*": ["components/*"],
       "@screens/*": ["screens/*"],
-      "@constants/*": ["constants/*"]
+      "@constants/*": ["constants/*"],
+      "@hooks/*": ["hooks/*"],
+      "@utils/*": ["utils/*"]
     }
   },
   "extends": "@react-native/typescript-config/tsconfig.json"
