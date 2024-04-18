@@ -1,3 +1,11 @@
 {
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@screens/*": ["screens/*"],
+      "@constants/*": ["constants/*"]
+    }
+  },
   "extends": "@react-native/typescript-config/tsconfig.json"
 }

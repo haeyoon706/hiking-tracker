@@ -1,9 +1,9 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {GlobalStyles} from '../../constants/styles';
-import Main from '../../screens/Main';
-import List from '../../screens/List';
-import Hiking from '../../screens/Hiking';
+import {GlobalStyles} from '@constants/styles';
+import Main from '@screens/Main';
+import List from '@screens/List';
+import Hiking from '@screens/Hiking';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 

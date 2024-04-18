@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {GlobalStyles} from '../../constants/styles';
+import {GlobalStyles} from '@constants/styles';
 
 const Map = () => {
   return (
