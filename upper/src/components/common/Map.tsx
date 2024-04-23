@@ -4,23 +4,30 @@ import MapView, {Marker} from 'react-native-maps';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {GlobalStyles} from '@constants/styles';
 
-const Map = () => {
+const Map = (props: MapProps) => {
+  const {myLocation} = props;
+
   return (
     <View style={styles.container}>
       <MapView
         style={styles.map}
         region={{
-          latitude: 37.78825,
-          longitude: -122.4324,
+          latitude: myLocation.lat,
+          longitude: myLocation.lng,
           latitudeDelta: 0.015,
           longitudeDelta: 0.0121,
         }}>
-        <Marker coordinate={{latitude: 37.78825, longitude: -122.4324}}>
-          <Icon
-            name="location-outline"
-            size={40}
-            color={GlobalStyles.colors.main}
-          />
+        <Marker
+          coordinate={{latitude: myLocation.lat, longitude: myLocation.lng}}>
+          <View style={styles.markerWrap}>
+            <View style={styles.marker}>
+              <Icon
+                name="location-outline"
+                size={16}
+                color={GlobalStyles.colors.background}
+              />
+            </View>
+          </View>
         </Marker>
       </MapView>
     </View>
@@ -28,6 +35,13 @@ const Map = () => {
 };
 
 export default Map;
+
+interface MapProps {
+  myLocation: {
+    lat: number;
+    lng: number;
+  };
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -39,5 +53,23 @@ const styles = StyleSheet.create({
   },
   map: {
     ...StyleSheet.absoluteFillObject,
+  },
+  markerWrap: {
+    width: 100,
+    height: 100,
+    borderRadius: 100,
+    backgroundColor: 'rgba(96, 153, 102, 0.3)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  marker: {
+    width: 25,
+    height: 25,
+    borderRadius: 25,
+    backgroundColor: GlobalStyles.colors.main,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: GlobalStyles.colors.background,
+    borderWidth: 1,
   },
 });

@@ -1,13 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Pressable, StyleSheet, View} from 'react-native';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Map from '@components/common/Map';
-import {useMountEffect} from '@hooks/lifecycle.ts';
+import {useMountEffect} from '@hooks/lifecycle';
 import Geolocation from '@react-native-community/geolocation';
 
 function Main(props: MainProps) {
   const {navigation} = props;
+
+  const [myLocation, setMyLocation] = useState({
+    lat: 41.9930135,
+    lng: 128.0671759,
+  });
 
   useMountEffect(() => {
     getGeolocation();
@@ -18,6 +23,7 @@ function Main(props: MainProps) {
       position => {
         const latitude = JSON.stringify(position.coords.latitude);
         const longitude = JSON.stringify(position.coords.longitude);
+        setMyLocation({lat: Number(latitude), lng: Number(longitude)});
 
         console.log(latitude);
         console.log(longitude);
@@ -35,7 +41,7 @@ function Main(props: MainProps) {
 
   return (
     <View style={styles.container}>
-      <Map />
+      <Map myLocation={myLocation} />
       <Pressable onPress={startHikingHandler}>
         <Icon name="play" size={32} />
       </Pressable>
