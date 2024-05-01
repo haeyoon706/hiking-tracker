@@ -4,6 +4,7 @@ import {GlobalStyles} from '@constants/styles';
 import Main from '@screens/Main';
 import List from '@screens/List';
 import Hiking from '@screens/Hiking';
+import More from '@screens/More';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -15,6 +16,7 @@ const Home = () => {
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Main" component={Main} />
       <Stack.Screen name="Hiking" component={Hiking} />
+      <Stack.Screen name="More" component={More} />
     </Stack.Navigator>
   );
 };
@@ -24,7 +26,7 @@ const tabList = [
   {name: 'Badge', comppnent: Home, icon: 'ribbon-outline'},
   {name: 'Ready', comppnent: Home, icon: 'prism-outline'},
   {name: 'List', comppnent: List, icon: 'podium-outline'},
-  {name: 'More', comppnent: List, icon: 'ellipsis-horizontal-outline'},
+  {name: 'More', comppnent: More, icon: 'ellipsis-horizontal-outline'},
 ];
 
 const Tabs = () => {
