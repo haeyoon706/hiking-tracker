@@ -1,7 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {GlobalStyles} from '@constants/styles';
-import Main from '@screens/Main';
+import Ready from '@screens/Ready';
 import List from '@screens/List';
 import Hiking from '@screens/Hiking';
 import More from '@screens/More';
@@ -11,20 +11,19 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const Home = () => {
+const Main = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Main" component={Main} />
+      <Stack.Screen name="Ready" component={Ready} />
       <Stack.Screen name="Hiking" component={Hiking} />
-      <Stack.Screen name="More" component={More} />
     </Stack.Navigator>
   );
 };
 
 const tabList = [
-  {name: 'Home', comppnent: Home, icon: 'home-outline'},
-  {name: 'Badge', comppnent: Home, icon: 'ribbon-outline'},
-  {name: 'Ready', comppnent: Home, icon: 'prism-outline'},
+  {name: 'Home', comppnent: Main, icon: 'home-outline'},
+  {name: 'Badge', comppnent: Main, icon: 'ribbon-outline'},
+  {name: 'Main', comppnent: Main, icon: 'prism-outline'},
   {name: 'List', comppnent: List, icon: 'podium-outline'},
   {name: 'More', comppnent: More, icon: 'ellipsis-horizontal-outline'},
 ];
