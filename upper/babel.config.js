@@ -19,7 +19,7 @@ module.exports = {
           '@screens': './src/screens',
           '@constants': './src/constants',
           '@hooks': './src/hooks',
-          '@utils': './src/utilsa',
+          '@utils': './src/utils',
         },
       },
     ],
