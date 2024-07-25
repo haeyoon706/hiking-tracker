@@ -9,7 +9,7 @@ import useGeolocation from '@hooks/useGeolocation';
 function Ready(props: ReadyProps) {
   const {navigation} = props;
 
-  const location = useGeolocation();
+  const {location} = useGeolocation();
 
   const startHikingHandler = () => {
     navigation.navigate('Hiking');
@@ -18,7 +18,7 @@ function Ready(props: ReadyProps) {
   return (
     <View style={styles.container}>
       <View style={styles.map}>
-        <Map myLocation={location.coordinates} />
+        <Map myLocation={location} />
       </View>
       <View style={styles.info}>
         <Pressable onPress={startHikingHandler} style={styles.ready}>
