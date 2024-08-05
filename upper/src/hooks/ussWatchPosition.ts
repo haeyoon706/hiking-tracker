@@ -1,13 +1,13 @@
 import Geolocation from '@react-native-community/geolocation';
 import {useEffect, useRef, useState} from 'react';
 
-export const useWatchPosition = (options = {}) => {
+export const useWatchPosition = () => {
   const [location, setLocation] = useState<locationType>({lat: 0, lng: 0});
   const [errors, setErrors] = useState<errorsType | null>(null);
 
   const locationWatchId = useRef(0);
 
-  const handleSuccess = (position: {
+  const onSuccess = (position: {
     coords: {latitude: number; longitude: number};
   }) => {
     setLocation({
@@ -16,7 +16,7 @@ export const useWatchPosition = (options = {}) => {
     });
   };
 
-  const handleError = (error: {code: number; message: string}) => {
+  const onError = (error: {code: number; message: string}) => {
     setErrors(error);
   };
 
@@ -28,13 +28,17 @@ export const useWatchPosition = (options = {}) => {
 
   useEffect(() => {
     locationWatchId.current = Geolocation.watchPosition(
-      handleSuccess,
-      handleError,
-      options,
+      onSuccess,
+      onError,
+      {
+        enableHighAccuracy: true,
+        timeout: 1000 * 60 * 1,
+        maximumAge: 1000 * 3600 * 24,
+      },
     );
 
     return cancelLocationWatch;
-  }, [options]);
+  }, []);
 
   return {location, cancelLocationWatch, errors};
 };
