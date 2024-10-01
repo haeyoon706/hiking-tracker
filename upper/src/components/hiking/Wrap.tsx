@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Timer from '@components/common/Timer';
 
-function Hiking() {
+const HikingWrap = () => {
   return (
     <View style={styles.container}>
       <Text>Hiking</Text>
@@ -12,9 +12,9 @@ function Hiking() {
       <Text>Altitude</Text>
     </View>
   );
-}
+};
 
-export default Hiking;
+export default HikingWrap;
 
 const styles = StyleSheet.create({
   container: {

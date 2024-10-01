@@ -27,15 +27,11 @@ export const useWatchPosition = () => {
   };
 
   useEffect(() => {
-    locationWatchId.current = Geolocation.watchPosition(
-      onSuccess,
-      onError,
-      {
-        enableHighAccuracy: true,
-        timeout: 1000 * 60 * 1,
-        maximumAge: 1000 * 3600 * 24,
-      },
-    );
+    locationWatchId.current = Geolocation.watchPosition(onSuccess, onError, {
+      enableHighAccuracy: true,
+      timeout: 1000 * 60 * 1,
+      maximumAge: 1000 * 3600 * 24,
+    });
 
     return cancelLocationWatch;
   }, []);
