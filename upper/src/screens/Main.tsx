@@ -5,8 +5,11 @@ import Map from '@components/common/Map';
 import {GlobalStyles} from '@constants/styles';
 import useGeolocation from '@hooks/useGeolocation';
 import HikingWrap from '@components/hiking/Wrap';
+import {NavigationProp, ParamListBase} from '@react-navigation/native';
 
-function Main() {
+function Main(props: MainProps) {
+  const {navigation} = props;
+
   const {location} = useGeolocation();
 
   const [status, setStatus] = useState('ready');
@@ -16,7 +19,15 @@ function Main() {
       case 'ready':
         return setStatus('hiking');
       case 'hiking':
-        return setStatus('ready');
+        return setStatus('pause');
+      default:
+        return null;
+    }
+  };
+
+  const onLongButtonHandler = () => {
+    if (status === 'pause') {
+      navigation.navigate('Result');
     }
   };
 
@@ -25,6 +36,7 @@ function Main() {
       case 'ready':
         return <Map myLocation={location} />;
       case 'hiking':
+      case 'pause':
         return <HikingWrap />;
     }
   };
@@ -35,6 +47,8 @@ function Main() {
         return 'play';
       case 'hiking':
         return 'pause';
+      case 'pause':
+        return 'square';
       default:
         return 'play';
     }
@@ -44,7 +58,11 @@ function Main() {
     <View style={styles.container}>
       <View style={styles.main}>{getScreen()}</View>
       <View style={styles.btnWrap}>
-        <Pressable onPress={onButtonHandler} style={styles.btn}>
+        <Pressable
+          onPress={onButtonHandler}
+          style={styles.btn}
+          onLongPress={onLongButtonHandler}
+          delayLongPress={2000}>
           <Icon
             name={getIcon()}
             size={40}
@@ -80,3 +98,7 @@ const styles = StyleSheet.create({
 });
 
 export default Main;
+
+interface MainProps {
+  navigation: NavigationProp<ParamListBase>;
+}
