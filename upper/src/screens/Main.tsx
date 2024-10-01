@@ -6,7 +6,7 @@ import {GlobalStyles} from '@constants/styles';
 import useGeolocation from '@hooks/useGeolocation';
 import HikingWrap from '@components/hiking/Wrap';
 
-function Ready() {
+function Main() {
   const {location} = useGeolocation();
 
   const [status, setStatus] = useState('ready');
@@ -79,4 +79,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Ready;
+export default Main;

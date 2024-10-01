@@ -1,24 +1,12 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {GlobalStyles} from '@constants/styles';
-import Ready from '@screens/Ready';
 import List from '@screens/List';
-import Hiking from '@screens/Hiking';
+import Main from '@screens/Main';
 import More from '@screens/More';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-
-const Main = () => {
-  return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Ready" component={Ready} />
-      <Stack.Screen name="Hiking" component={Hiking} />
-    </Stack.Navigator>
-  );
-};
 
 const tabList = [
   {name: 'Home', comppnent: Main, icon: 'home-outline'},
