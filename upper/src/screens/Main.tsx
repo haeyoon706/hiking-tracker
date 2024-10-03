@@ -17,6 +17,7 @@ function Main(props: MainProps) {
   const onButtonHandler = () => {
     switch (status) {
       case 'ready':
+      case 'pause':
         return setStatus('hiking');
       case 'hiking':
         return setStatus('pause');
@@ -25,10 +26,9 @@ function Main(props: MainProps) {
     }
   };
 
-  const onLongButtonHandler = () => {
-    if (status === 'pause') {
-      navigation.navigate('Result');
-    }
+  const onStopHandler = () => {
+    setStatus('ready');
+    navigation.navigate('Result');
   };
 
   const getScreen = () => {
@@ -44,11 +44,10 @@ function Main(props: MainProps) {
   const getIcon = () => {
     switch (status) {
       case 'ready':
+      case 'pause':
         return 'play';
       case 'hiking':
         return 'pause';
-      case 'pause':
-        return 'square';
       default:
         return 'play';
     }
@@ -60,15 +59,35 @@ function Main(props: MainProps) {
       <View style={styles.btnWrap}>
         <Pressable
           onPress={onButtonHandler}
-          style={styles.btn}
-          onLongPress={onLongButtonHandler}
-          delayLongPress={2000}>
+          style={({pressed}) => ({
+            ...styles.btn,
+            backgroundColor: pressed
+              ? GlobalStyles.colors.main
+              : GlobalStyles.colors.mainOpacityDeep,
+          })}>
           <Icon
             name={getIcon()}
             size={40}
             color={GlobalStyles.colors.background}
           />
         </Pressable>
+        {status === 'pause' && (
+          <Pressable
+            style={({pressed}) => ({
+              ...styles.stopBtn,
+              backgroundColor: pressed
+                ? GlobalStyles.colors.main
+                : GlobalStyles.colors.mainOpacity,
+            })}
+            onLongPress={onStopHandler}
+            delayLongPress={2000}>
+            <Icon
+              name={'square'}
+              size={25}
+              color={GlobalStyles.colors.background}
+            />
+          </Pressable>
+        )}
       </View>
     </View>
   );
@@ -85,6 +104,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'row',
+    gap: 5,
   },
   btn: {
     width: 120,
@@ -94,6 +115,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingLeft: 5,
+  },
+  stopBtn: {
+    width: 60,
+    height: 60,
+    borderRadius: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

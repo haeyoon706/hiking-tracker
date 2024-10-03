@@ -5,11 +5,12 @@ import Timer from '@components/common/Timer';
 const HikingWrap = () => {
   return (
     <View style={styles.container}>
-      <Text>Hiking</Text>
       <Timer />
-      <Text>Distance</Text>
-      <Text>Face</Text>
-      <Text>Altitude</Text>
+      <View>
+        <Text>Distance</Text>
+        <Text>Face</Text>
+        <Text>Altitude</Text>
+      </View>
     </View>
   );
 };
